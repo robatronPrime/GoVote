@@ -6,7 +6,7 @@ export default class SearchControl extends MapControl {
     position: LeafletPropTypes.controlPosition,
   }
 
-  createLeafletElement(): Object {
+  createLeafletElement() {
     const cogAllPointsGeocodeService = geocodeServiceProvider({
       url: 'https://gis.greensboro-nc.gov/arcgis/rest/services/Geocoding/AllPoints_GCS/GeocodeServer',
       label: 'All Points',
@@ -25,7 +25,7 @@ export default class SearchControl extends MapControl {
 
     // listen for the results event and pass latln to the map
     searchControl.on('results', (data) => {
-      this.props.results(data.results[0]);
+      this.props.setGeocodeResult(data.results[0]);
     });
     return searchControl;
   }
